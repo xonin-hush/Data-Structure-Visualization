@@ -1,6 +1,6 @@
 import graphviz
 
-class TreeNode:
+class Node:
     def __init__(self, key):
         self.key = key
         self.left = None
@@ -8,7 +8,7 @@ class TreeNode:
 
 def insert(root, key):
     if root is None:
-        return TreeNode(key)
+        return Node(key)
     else:
         if key < root.key:
             root.left = insert(root.left, key)
@@ -16,7 +16,7 @@ def insert(root, key):
             root.right = insert(root.right, key)
     return root
 
-def visualize_binary_tree(root):
+def visualizeInOrder(root):
     dot = graphviz.Digraph()
     dot.node(str(root.key))
 
@@ -68,4 +68,4 @@ keys = [5, 3, 7, 2, 4, 6, 8,1,9]
 for key in keys:
     root = insert(root, key)
 
-visualize_binary_tree(root)
+visualizeInOrder(root)
