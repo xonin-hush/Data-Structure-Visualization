@@ -1,4 +1,28 @@
 import graphviz
+import tkinter as tk
+from tkinter import ttk
+from tkinter import messagebox
+win=tk.Tk()
+win.title("Binary Tree Visualization")
+win.minsize(800,400)
+win.resizable(0,0)
+win.configure(bg='#1f2937')
+
+numbers=''
+informationLabel=tk.LabelFrame(win,text="Create Tree",width=400,height=200,padx=30,pady=30,bg='#1f2937',fg="White")
+welcomeMsg=messagebox.showinfo("welcome","please let your entry be only Numbers, each number separated by a space")
+informationLabel.pack()
+L1 = tk.Label(informationLabel, text="Enter Numbers in order",bg='#1f2937',fg="White")
+L1.pack()
+entry = tk.Entry(informationLabel, bd =5,bg='#1f2937',fg="White")
+entry.pack()
+label=tk.Label(win,text='',font='Helvetica 13',bg='#1f2937')
+label.pack()
+
+
+
+
+
 
 class Node:
     def __init__(self, key):
@@ -64,8 +88,28 @@ def get_min_value(root):
 
 # Example usage:
 root = None
-keys = [5, 3, 7, 2, 4, 6, 8,1,9]
-for key in keys:
-    root = insert(root, key)
+# keys = [5, 3, 7, 2, 4, 6, 8,1,9]
+# for key in keys:
+#     root = insert(root, key)
+# visualizeInOrder(root)
 
-visualizeInOrder(root)
+def use(numbersList):
+    root= None
+    keys = numbersList
+    for key in keys:
+        root = insert(root, key)
+    visualizeInOrder(root)
+    
+def get_data():
+    numbers=entry.get()
+    try:
+        numbers = numbers.split()
+        numbersList = [int(i) for i in numbers]
+        use(numbersList)
+        label.config(text="Check your files...Thank you :)",font= ('Helvetica 13'))
+    except:
+        label.config(text="please enter only numbers separated by one space")
+    
+ttk.Button(win,text="Insert",command=get_data).pack()
+
+win.mainloop()

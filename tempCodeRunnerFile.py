@@ -1,6 +1,8 @@
-  def draw_tree(self, level=0, prefix=""):
-        if self.rightChild:
-            self.rightChild.draw_tree(level + 1, prefix + "    ")
-        print(" " * 4 * level + prefix + str(self.root))
-        if self.leftChild:
-            self.leftChild.draw_tree(level + 1, prefix + "    ")
+numbers = numbers.split()
+    numbersList = [int(i) for i in numbers]
+    print(numbersList)
+    root = None
+    for key in numbersList:
+        root = insert(root, key)
+    visualizeInOrder(root)
+    label.config(text="Check your files...Thank you :)",font= ('Helvetica 13'))
